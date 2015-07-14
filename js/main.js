@@ -21,3 +21,17 @@ var average = function(items){
 average(items);
 
 // // QUESTION 2
+var priceRange = items.filter(function(item){
+  return (item.price > 14 && item.price < 18);
+}).map(function(name){
+  return name.title;
+});
+
+answer2.innerHTML = priceRange;
+
+// QUESTION 3
+
+// items.map(function(i){
+//   console.log(i.price);
+//   console.log(i['price']);
+// });

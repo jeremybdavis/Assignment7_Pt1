@@ -30,7 +30,13 @@ var priceRange = items.filter(function(item){
 answer2.innerHTML = priceRange;
 
 // QUESTION 3
+var gdp = items.filter(function(item){
+  return(item.currency_code === "GBP");
+}).map(function(name){
+  return name.title + " costs " + name.price;
+});
 
+answer3.innerHTML = gdp;
 // items.map(function(i){
 //   console.log(i.price);
 //   console.log(i['price']);

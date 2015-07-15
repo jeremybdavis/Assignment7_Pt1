@@ -25,9 +25,11 @@ var priceRange = items.filter(function(item){
   return (item.price > 14 && item.price < 18);
 }).map(function(name){
   return "<li>" + name.title + "</li>";
+}).reduce(function(html, item){
+  return html + item;
 });
 
-answer2.innerHTML = "<ul>" + priceRange + "</ul>";
+answer2.innerHTML = priceRange;
 
 // QUESTION 3
 var gdp = items.filter(function(item){
@@ -54,7 +56,12 @@ answer4.innerHTML = wood;
 var eight = items.filter(function(item){
   return (item.materials.length >=8);
 }).map(function(item){
-  return item.title + " has " + item.materials.length + " materials:" + '<li>' + item.materials + '</li>';
+  var materials = item.materials.map(function(material){
+    return '<li>' + material + '</li>';
+  }).reduce(function(html, item){
+    return html + item;
+  })
+  return '<li>' + item.title + " has " + item.materials.length + " materials:" + '<ul>' + materials + '</ul></li>';
 });
 
 answer5.innerHTML = eight;
@@ -66,7 +73,3 @@ var iMade = items.filter(function(item){
 });
 
 answer6.innerHTML = iMade.length + " items are made by their sellers.";
-// items.map(function(i){
-//   console.log(i.price);
-//   console.log(i['price']);
-// });

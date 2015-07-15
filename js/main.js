@@ -24,10 +24,10 @@ average(items);
 var priceRange = items.filter(function(item){
   return (item.price > 14 && item.price < 18);
 }).map(function(name){
-  return name.title;
+  return "<li>" + name.title + "</li>";
 });
 
-answer2.innerHTML = priceRange;
+answer2.innerHTML = "<ul>" + priceRange + "</ul>";
 
 // QUESTION 3
 var gdp = items.filter(function(item){
@@ -37,6 +37,35 @@ var gdp = items.filter(function(item){
 });
 
 answer3.innerHTML = gdp;
+
+// QUESTION 4
+
+var wood = items.filter(function(item){
+  return item.materials.indexOf('wood') !=-1;
+}).map(function(item){
+  return '<li>' + item.title + " is made of wood." + '</li>';
+}).reduce(function(html, item){
+  return html + item;
+});
+
+answer4.innerHTML = wood;
+
+// QUESTION 5
+var eight = items.filter(function(item){
+  return (item.materials.length >=8);
+}).map(function(item){
+  return item.title + " has " + item.materials.length + " materials:" + '<li>' + item.materials + '</li>';
+});
+
+answer5.innerHTML = eight;
+
+// QUESTION 6
+
+var iMade = items.filter(function(item){
+  return(item.who_made === "i_did");
+});
+
+answer6.innerHTML = iMade.length + " items are made by their sellers.";
 // items.map(function(i){
 //   console.log(i.price);
 //   console.log(i['price']);
